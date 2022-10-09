@@ -11,7 +11,7 @@ deposit = [int((deposit[0]) * (money/100)),
            int((deposit[3]) * (money/100))]
 
 print('Накопления за год', deposit)
-print('Наибольшее накопление', max(deposit))
+print('Максимальная сумма, которую вы можете заработать —', max(deposit))
 
 
 #Программа считает копейки, в т. ч. в ответе:
@@ -22,4 +22,4 @@ deposit_float = [round(((deposit_float[0]) / 100 * money), 2),
                  round(((deposit_float[2]) / 100 * money), 2),
                  round(((deposit_float[3]) / 100 * money), 2)]
 print('Накопления за год (с копейками)', deposit_float)
-print('Наибольшее накопление', max(deposit_float))
+print('Максимальная сумма, которую вы можете заработать —', max(deposit_float))
