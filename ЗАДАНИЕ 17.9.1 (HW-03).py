@@ -37,27 +37,13 @@ def sort_by_replace():  # функция сортирует список мет�
 
 array = sort_by_replace()
 
-
-def binary_search(array, element, left, right):
-    if left > right:  # если левая граница превысила правую,
-        return False  # значит элемент отсутствует
-    middle = (right + left) // 2  # находим середину
-    if int(array[middle]) == element:  # если элемент в середине,
-        return middle  # возвращаем этот индекс
-    elif element < int(array[middle]):  # если элемент меньше элемента в середине
-        # рекурсивно ищем в левой половине
-        return binary_search(array, element, left, middle - 1)
-    else:  # иначе в правой
-        return binary_search(array, element, middle + 1, right)
-
-
 def magneto_meme2():
     try:
-        element = int(input("Введите 1 целое число:"))
+        element = int(input("Введите 1 целое число больше 0:"))
         if not isinstance(element, int):
             raise ValueError(element)
     except ValueError as error:
-        print("Я сказал: 'Введите целое число'!", error)
+        print("Я сказал: 'Введите ОДНО ЦЕЛОЕ ЧИСЛО БОЛЬШЕ 0'!", error)
         return magneto_meme2()
     else:
         print(f'Превосходно! {element}')
@@ -65,5 +51,23 @@ def magneto_meme2():
 
 
 element = magneto_meme2()
+
+
+def binary_search(array, element, left, right):
+    if len(array) < element:
+        return len(array)-1
+    if left > right:  # если левая граница превысила правую,
+        return False  # значит элемент отсутствует
+    middle = (right + left) // 2  # находим середину
+    if int(array[middle]) == element:  # если элемент в середине,
+        return middle-1  # возвращаем этот индекс
+    elif element < int(array[middle]):  # если элемент меньше элемента в середине
+        # рекурсивно ищем в левой половине
+        return binary_search(array, element, left, middle - 1)
+    else:  # иначе в правой
+        return binary_search(array, element, middle + 1, right)
+
+
+
 # запускаем алгоритм на левой и правой границе
-print(binary_search(array, element, 0, len(array)))
+print(binary_search(array, element, 0, len(array)-1))
